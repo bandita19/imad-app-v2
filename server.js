@@ -4,13 +4,13 @@ var path = require('path');
 
 var app = express();
 app.use(morgan('combined'));
-app.get('article1', function (req, res) {
+app.get('article-one', function (req, res) {
  res.send('article 1 is requested and will be served here');
 });
-app.get('article2', function (req, res) {
+app.get('article-two', function (req, res) {
  res.send('article 2 is requested and will be served here');
 });
-app.get('article3', function (req, res) {
+app.get('article-three', function (req, res) {
  res.send('article 3 is requested and will be served here');
 });
 
