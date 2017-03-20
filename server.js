@@ -5,19 +5,33 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-var article = {
-    title: "Article One | Bandita",
-    head: "Article One",
-    content:`
-        <p>
-            My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.
-        </p>
-        <p>
-            My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.
-        </p>
-        <p>
-            My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.
-        </p>`
+var articles= {
+    'article-one':{
+                title: "Article One | Bandita",
+                head: "Article One",
+                content:`
+                    <p>
+                        My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.
+                    </p>
+                    <p>
+                        My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.
+                    </p>
+                    <p>
+                        My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.
+                    </p>`
+    },
+    'article-two':{
+                title: "Article Two | Bandita",
+                head: "Article Two",
+                content:`
+                        My Article Two.`
+    },
+    'article-three':{
+                title: "Article Three | Bandita",
+                head: "Article Three",
+                content:`
+                        My Article Three.`
+    },
 };
 function createTemp(data){
     var title=data.title;
@@ -50,16 +64,9 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-app.get('/article-one', function (req, res) {
- res.send(createTemp(article));
-});
-
-app.get('/article-two', function (req, res) {
- res.send('article two is requested and will be served here');
-});
-
-app.get('/article-three', function (req, res) {
- res.send('article three is requested and will be served here');
+app.get('/:articleName', function (req, res) {
+ var articleName=req.params.articleName;
+ res.send(createTemp(articleName));
 });
 
 app.get('/ui/style.css', function (req, res) {
