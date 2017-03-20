@@ -5,12 +5,48 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
+var article = {
+    title:"Article One | Bandita",
+    head: "Article One",
+    content:`
+        <p>
+            My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.
+        </p>
+        <p>
+            My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.
+        </p>
+        <p>
+            My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.My Article One.
+        </p>`
+};
+function createTemp(data){
+    var htmltemp=`
+    <html>
+        <head>
+            <title>
+                ${title}
+            </title>
+            <link href="/ui/style.css" rel="stylesheet" />
+        </head>
+        <body>
+            <div class="head">
+            <h1>${head}</h1>
+            </div>
+            <hr>
+            <div class="content">
+            ${content}
+            </div>
+        </body>
+    </html>
+    `;
+}
+
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
 app.get('/article-one', function (req, res) {
- res.sendFile(path.join(__dirname, 'ui', 'article-one.html'));
+ res.send(path.join(createTemp(article)));
 });
 
 app.get('/article-two', function (req, res) {
