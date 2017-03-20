@@ -20,3 +20,13 @@ body {
     height: 200px;
 }
 
+.head{
+    text-align: center;
+    font-family: sans-serif;
+}
+
+.content{
+    background-color: blue;
+    background-color: red;
+    margin: 0 auto;
+}
