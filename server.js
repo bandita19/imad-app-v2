@@ -20,6 +20,9 @@ var article = {
         </p>`
 };
 function createTemp(data){
+    var title=data.title;
+    var head=data.head;
+    var content=data.content;
     var htmltemp=`
     <html>
         <head>
