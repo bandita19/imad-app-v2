@@ -50,7 +50,7 @@ app.get('/', function (req, res) {
 });
 
 app.get('/article-one', function (req, res) {
- res.send(path.join(createTemp(article)));
+ res.send((createTemp(article)));
 });
 
 app.get('/article-two', function (req, res) {
