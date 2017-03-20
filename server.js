@@ -6,7 +6,7 @@ var app = express();
 app.use(morgan('combined'));
 
 var article = {
-    title:"Article One | Bandita",
+    title: "Article One | Bandita",
     head: "Article One",
     content:`
         <p>
@@ -30,6 +30,7 @@ function createTemp(data){
             <title>
                 ${title}
             </title>
+            <meta name="viewport" content="width=device-width, initial-scale-1">
             <link href="/ui/style.css" rel="stylesheet" />
         </head>
         <body>
@@ -50,7 +51,7 @@ app.get('/', function (req, res) {
 });
 
 app.get('/article-one', function (req, res) {
- res.send((createTemp(article)));
+ res.send(createTemp(article));
 });
 
 app.get('/article-two', function (req, res) {
