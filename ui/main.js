@@ -15,7 +15,6 @@ button.onclick = function () {
                 span.innerHTML = counter.toString();
             }
         }
-        //NOT DONE YET
     };
     //Make a request to the counter endpoint.
     request.open('GET' , 'http://bandita19.imad.hasura-app.io/counter' , true);
