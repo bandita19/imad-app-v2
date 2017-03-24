@@ -73,9 +73,9 @@ app.get('/test-db',function(req,res){
 });
 
 var names = [];
-aap.get('submit-name/:name', function(res,req) {
+aap.get('submit-name', function(res,req) {
     //Get the name from the request
-    var name = req.param.name;//1000
+    var name = req.query.name;//1000
     
     names.push(name);
     // JSON: Javascript Object Notation
